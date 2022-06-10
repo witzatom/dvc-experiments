@@ -1,23 +1,25 @@
 schema: '2.0'
 stages:
   define_dataset:
-    cmd: python define_dataset.py ../data dataset.txt
+    cmd: python define_dataset.py ../data ./data
     deps:
     - path: ../data
       md5: b11a723c90dc7b0aa89072bd9750945a.dir
       size: 256808
       nfiles: 8
     outs:
-    - path: dataset.txt
-      md5: f41f74825b4986a2576e2038a9708e94
-      size: 149
+    - path: ./data
+      md5: 631453a16cb58657493487251e8a6429.dir
+      size: 128395
+      nfiles: 2
   train_model:
-    cmd: python train_model.py dataset.txt model.txt
+    cmd: python train_model.py ./data model.txt
     deps:
-    - path: dataset.txt
-      md5: f41f74825b4986a2576e2038a9708e94
-      size: 149
+    - path: ./data
+      md5: 631453a16cb58657493487251e8a6429.dir
+      size: 128395
+      nfiles: 2
     outs:
     - path: model.txt
-      md5: f41f74825b4986a2576e2038a9708e94
-      size: 149
+      md5: 6fcbc2288962b69cb93f2a6e3e5a45f4
+      size: 67

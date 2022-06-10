@@ -1,13 +1,13 @@
 stages:
   define_dataset:
-    cmd: python define_dataset.py ../data dataset.txt
+    cmd: python define_dataset.py ../data ./data
     deps:
       - ../data
     outs:
-      - dataset.txt
+      - ./data
   train_model:
-    cmd: python train_model.py dataset.txt model.txt
+    cmd: python train_model.py ./data model.txt
     deps:
-      - dataset.txt
+      - ./data
     outs:
       - model.txt

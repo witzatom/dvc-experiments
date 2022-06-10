@@ -35,11 +35,11 @@ We have the `define_dataset` step as the first part of the pipeline. This step w
 * immutable to changes when data folder changes in ways we dont care about - for example if a new file is added that we wont use in our model
 * changes if any file that we care about in our modelling changes
 
-This is achieved simply by listing all the files we care about into a file, along with their md5 hashes.
+In this branch this is achieved symlinking all the files we care about into a directory.
 
 The following steps, in my example `train_model` need to also adhere to these requirements:
 * never depend (dvc dep) on the external data folder
-* always only use the files that are listed in the file produced by the 'define_dataset' step
+* instead use the files that are produced by the 'define_dataset' step
 
 ## Example usage
 
@@ -59,4 +59,4 @@ Now the `define_dataset` step will be dirty. You can rerun it with
 dvc repro
 ```
 
-But, because the dataset definition `dataset.txt` did not change, the command did not trigger rerunning the `train_model` step.
+But, because the dataset definition did not change, the command did not trigger rerunning the `train_model` step.
